@@ -1,0 +1,48 @@
+<nav class="navbar bg-light">
+    <div class="container-fluid" > 
+      <span class="navbar-brand mb-0 h1">E-MANAGER</span>
+    </div>
+  </nav>
+
+<div style="text-align: center;">
+<button type="button" class="btn btn-primary" (click)="createFile()">
+    <i class="bi bi-person-fill-add"></i>
+    Create File
+</button>
+</div>
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">FileName</th>
+        <th scope="col">FileSize</th>
+        <th scope="col">CreatedDate</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of userArray">
+        <td scope="row" >{{item.fileName}}</td>
+        <td scope="row" >{{item.fileSize}}</td>
+        <td scope="row" >{{item.createdDate}}</td>
+        <td>
+            <button class="btn btn-primary" (click)="downloadUser(item.fileId)">
+                <i class="bi bi-pencil-square"></i>
+                Download
+            </button>
+            <button class="btn btn-danger" (click)="deleteFile(item.fileId)">
+                <i class="bi bi-archive"></i>
+                Delete
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div  style="text-align: center;">
+    <button class="btn btn-primary" (click)="logOut()">
+      <i class="bi bi-box-arrow-in-left"></i>
+      Logout
+  </button>
+  </div>
+

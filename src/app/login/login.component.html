@@ -1,0 +1,35 @@
+
+<div class="tabClass" >
+    <div>
+      <h1>E-Manager</h1>
+    </div><br>
+          <form class="formstyle" [formGroup]="loginForm" (ngSubmit)=onsubmit(loginForm) >
+            <mat-form-field appearance="outline">
+              <mat-label>UserName</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="username">
+              <button mat-icon-button matSuffix >
+                <mat-icon></mat-icon>
+              </button>
+              <mat-error>UserName Required</mat-error>
+            </mat-form-field>
+            <br>
+  
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="Placeholder" formControlName="password" [type]="hide?'password':'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error>UserName Required</mat-error>
+            </mat-form-field>
+        
+            <div>
+             <button mat-raised-button>
+              <i class="bi bi-box-arrow-in-right"></i>
+              LogIn
+            </button>
+            </div>
+          </form>
+        
+    
+  </div>

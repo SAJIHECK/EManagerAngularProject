@@ -1,0 +1,47 @@
+<nav class="navbar bg-light">
+    <div class="container-fluid" > 
+      <span class="navbar-brand mb-0 h1">E-MANAGER</span>
+    </div>
+  </nav>
+
+<div style="text-align: center;">
+<button type="button" class="btn btn-primary" (click)="createUser()">
+    <i class="bi bi-person-fill-add"></i>
+    Create
+</button>
+</div>
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Department</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of userArray">
+        <td scope="row" >{{item.firstName}}</td>
+        <td scope="row" >{{item.lastName}}</td>
+        <td scope="row" >{{item.department}}</td>
+        <td>
+            <button class="btn btn-primary" (click)="editUser(item.userId)">
+                <i class="bi bi-pencil-square"></i>
+                Edit
+            </button>
+            <button class="btn btn-danger" (click)="deleteUser(item.userId)">
+                <i class="bi bi-archive"></i>
+                Delete
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div  style="text-align: center;">
+    <button class="btn btn-primary" (click)="logOut()">
+      <i class="bi bi-box-arrow-in-left"></i>
+      Logout
+  </button>
+  </div>

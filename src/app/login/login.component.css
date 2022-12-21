@@ -1,0 +1,32 @@
+.tabClass{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+   
+}
+
+.loginCard{
+    width: 100%;
+       border: 1px solid silver;
+    border-radius: .7rem;
+
+}
+.mat-form-field{
+    width: 100%;
+}
+.formstyle{
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-size: 300%;
+    line-height: 300%;
+    box-sizing: border-box;
+}
+.mat-form-field{
+    width: 50%;
+}
