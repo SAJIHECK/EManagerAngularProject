@@ -12,7 +12,6 @@ export class FilecreateComponent {
   ngOnInit(){
     console.log(File)
   }
-
   constructor(private apiBackendService:ApiBackendService,private router:Router){}
    formData = new FormData(); 
    File:any=[]
@@ -20,27 +19,20 @@ export class FilecreateComponent {
 
   onChange(event:any) {
     this.File = event.target.files[0];
-    //console.log(this.File)
 }
 
   onUpload(){
-
     this.formData.append("userfiles", this.File);
     this.apiBackendService.uploadFiles(this.formData).subscribe((res:any)=> { 
       console.log(res)
 
       if(res.fileId!=null){
         this.router.navigate(['/user'])
-     }
-
-
-     
+     }  
   },(err) => {
     alert(err.error.sMessage);
   })
-
   }
-
    shortLink:any
 
 }

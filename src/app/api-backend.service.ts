@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,6 @@ export class ApiBackendService {
   }
 
   downloadFile(fileId:any){
-    return this.http.get<any>(`http://localhost:8081/downloadFile?fileId=${fileId}`)
-  }
+    return this.http.get(`http://localhost:8081/downloadFile?fileId=${fileId}`,{observe:'response',responseType:"blob"})
+  } 
 }

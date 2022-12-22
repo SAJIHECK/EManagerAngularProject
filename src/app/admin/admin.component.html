@@ -18,6 +18,7 @@
         <th scope="col">FirstName</th>
         <th scope="col">LastName</th>
         <th scope="col">Department</th>
+        <th scope="col">Created Date</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -26,6 +27,7 @@
         <td scope="row" >{{item.firstName}}</td>
         <td scope="row" >{{item.lastName}}</td>
         <td scope="row" >{{item.department}}</td>
+        <td scope="row" >{{item.createdDate}}</td>
         <td>
             <button class="btn btn-primary" (click)="editUser(item.userId)">
                 <i class="bi bi-pencil-square"></i>

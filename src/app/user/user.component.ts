@@ -24,12 +24,20 @@ export class UserComponent {
   }
 
   downloadUser(fileId:any){
-    
     this.apiBackendService.downloadFile(fileId).subscribe((res:any)=>{
-      console.log(res)
+      //let fileName=res.headers.get('Content-Disposition')
+      //?.split(';')[1].split('=')[1];
+      //fileName="haloo.jpg"
+      let blob:Blob=res.body as Blob;
+      let url=window.URL.createObjectURL(blob);
+      window.open(url);
+     // let a =document.createElement('a');
+      //a.download=fileName;
+      //a.href=window.URL.createObjectURL(blob);
+     // a.click;
+
      })
-  
-  }
+}
 
   deleteFile(fileId:any){
     if(confirm('Are you sure you want to delete')){

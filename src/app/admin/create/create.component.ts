@@ -22,7 +22,6 @@ export class CreateComponent {
     if(this.userId){
       this.edited = false;
       this.apiBackendService.getUser(this.userId).subscribe((res:any)=>{
-        console.log(res)
       this.user=res
       })
     }
@@ -55,7 +54,4 @@ export class CreateComponent {
    }
    
 })
-}
-  }
-
-}
+} }}

@@ -3,14 +3,16 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class JwtInterceptorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private router:Router) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> 
   {
@@ -23,6 +25,15 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
       });
     }
   }
-    return next.handle(request);
+    return next.handle(request).pipe(tap(() => {},
+    (err: any) => {
+    if (err instanceof HttpErrorResponse) {
+      if (err.status !== 401) {
+       return;
+      }
+      localStorage.removeItem('sJwt');
+      this.router.navigate(['']);
+    }
+  }));
   }
 }
