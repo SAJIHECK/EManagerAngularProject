@@ -10,29 +10,42 @@ import { ApiBackendService } from 'src/app/api-backend.service';
 export class FilecreateComponent {
 
   ngOnInit(){
-    console.log(File)
+    console.log(this.FileList.name+"list of files")
   }
   constructor(private apiBackendService:ApiBackendService,private router:Router){}
    formData = new FormData(); 
-   File:any=[]
+  
+    FileList:any=[]
   loading=true
 
   onChange(event:any) {
-    this.File = event.target.files[0];
+    this.FileList.push(event.target.files[0]);
+    console.log(this.FileList.length)
 }
 
+removeFIle(index:any){
+ console.log(File)
+  this.FileList.splice(index,1)
+  
+}
+
+
+
   onUpload(){
-    this.formData.append("userfiles", this.File);
+
+    for  (var i =  0; i <  this.FileList.length; i++)  { 
+    this.formData.append("userfiles", this.FileList[i]);
+    }
+   
     this.apiBackendService.uploadFiles(this.formData).subscribe((res:any)=> { 
       console.log(res)
-
       if(res.fileId!=null){
         this.router.navigate(['/user'])
-     }  
-  },(err) => {
+     }},(err) => {
     alert(err.error.sMessage);
   })
-  }
+  
+}
    shortLink:any
 
 }

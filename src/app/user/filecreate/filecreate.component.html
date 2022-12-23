@@ -1,22 +1,27 @@
 <div class="text-center">
     <input class="form-control" type="file" 
             (change)="onChange($event)">
-  
-    <button (click)="onUpload()" 
-        class="btn btn-success">
-        Upload
-    </button>
-</div>
-  
-<!-- Shareable short link of  uploaded file -->
-<div class="container text-center jumbotron"
-    *ngIf="shortLink">
-    <h2> Visit Here</h2>
-    <a href="{{shortLink}}">{{shortLink}}</a>
-</div>
-  
-<!--Flag variable is used here-->
-<div class="container" *ngIf="loading">
-    <h3>Loading ...</h3>
+ 
 </div>
 
+<div> 
+    <table class="table table-hover">
+        <tbody>
+          <tr *ngFor="let item of FileList;let indexOfelement=index;">
+            <td scope="row" >{{item.name}}</td>
+            <td>
+                <button class="btn btn-outline-dark" (click)="removeFIle(indexOfelement)">
+                    <i class="bi bi-x-circle-fill"></i>Remove
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<div class="text-center">
+    <button (click)="onUpload()" 
+    class="btn btn-success" [disabled]="FileList.length==0">
+    Upload
+</button>
+</div>
